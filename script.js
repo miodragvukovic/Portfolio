@@ -47,7 +47,7 @@ for ( let i = 0; i < document.getElementsByClassName('trigger').length; i++ ) {
 
 function request(page) {
 	const request = new XMLHttpRequest()
-	var url = "https://cdn.jsdelivr.net/gh/miodragvukovic/VanillaPWA/"+page+".html"
+	var url = "https://cdn.jsdelivr.net/gh/miodragvukovic/newstuff/"+page+".html"
 	request.open('get', url, true)
 	request.onreadystatechange = function() {
 		if ( request.readyState == 3 ) {
