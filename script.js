@@ -6,6 +6,7 @@ setTimeout(() => {
 }, 100)
 
 const degToRad = Math.PI * 2 / 360
+
 function matrixRotate(num) {
 	radian = num * degToRad
 	sin = Math.sin(radian)
@@ -16,6 +17,7 @@ function matrixRotate(num) {
 	d = parseFloat(cos).toFixed(8)
 	return "matrix("+ a +", "+ b +", "+ c +", "+ d +", 0, 0)"
 }
+
 for ( let i = 0; i < document.getElementsByClassName('trigger').length; i++ ) {
 	var trigger = document.getElementsByClassName('trigger')[i]
 	trigger.addEventListener('click', function(){
@@ -79,11 +81,36 @@ function request(page) {
 }
 function homeMovement() {
 	var corrnerWheel = document.querySelector('.top-corrner-wheels')
+	var showcase = document.querySelector('.homepage-showcase')
+	var move = 0
+	var moveLetters = 0
+	var truth = true
 	document.querySelector('.homepage').addEventListener('mousemove', function(e){
 		const x = e.clientX
-		corrnerWheel.children[0].style.transform = matrixRotate(x * 0.02)
-		corrnerWheel.children[1].style.transform = "translate(90%, -25%) scale(.9) rotate3d(0, 0, 1, -"+x * 0.02+"deg)"
-		corrnerWheel.children[2].style.transform = "translate(-35%, 90%) scale(.9) rotate3d(0, 0, 1, -"+x * 0.02+"deg)"
+		move++
+		corrnerWheel.children[0].style.transform = matrixRotate(move * 0.3)
+		corrnerWheel.children[1].style.transform = "translate(90%, -25%) scale(.9) rotate3d(0, 0, 1, -"+move * 0.3+"deg)"
+		corrnerWheel.children[2].style.transform = "translate(-35%, 90%) scale(.9) rotate3d(0, 0, 1, -"+move * 0.3+"deg)"
+		// if ( moveLetters >= 200 ) {
+		// 	truth = false
+		// } else if ( moveLetters == 0 ) {
+		// 	truth = true
+		// }
+		// if ( truth ) {
+		// 	moveLetters++
+		// } else {
+		// 	moveLetters--
+		// }
+		// console.log(moveLetters)
+		// for ( show of showcase.children ) {
+		// 	show.style.color = "rgb("+ moveLetters / 2 +", "+ moveLetters / 2 +", "+ moveLetters / 2 +")"
+		// }
+		// for ( show of showcase.getElementsByClassName('go-left') ) {
+		// 	show.style.transform = "translate3d(-"+ moveLetters * 0.1 +"px, 0, 0)"
+		// }
+		// for ( show of showcase.getElementsByClassName('go-right') ) {
+		// 	show.style.transform = "translate3d("+ moveLetters * 0.1 +"px, 0, 0)"
+		// }
 	})
 }
 homeMovement()
