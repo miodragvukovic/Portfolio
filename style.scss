@@ -703,9 +703,6 @@ main {
 		padding-right: 5vw;
 	}
 }
-// .showcase-word:hover {
-// 	color: $white;
-// }
 
 .top-corrner-wheels {
 	position: absolute;
@@ -724,6 +721,43 @@ main {
 		transform: translate(-35%, 90%) scale(.9) rotate(0deg);
 	}
 }
+
+.home-circle {
+	position: absolute;
+	top: -20vw;
+	left: -20vw;
+	height: 30vw;
+	width: 30vw;
+	transform: rotate(-45deg);
+	.left, .right{
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 50%;
+		transform-origin: right center;
+		overflow: hidden;
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: calc(100% - .6vw);
+			width: calc(200% - .6vw);
+			border: .3vh solid $white;
+			border-radius: 50%;
+		}
+	}
+	.right {
+		left: 50%;
+		transform-origin: left center;
+		&:before {
+			left: -100%;
+			transform: scale(.95);
+		}
+	}
+}
+
 
 
 

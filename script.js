@@ -49,6 +49,7 @@ for ( let i = 0; i < document.getElementsByClassName('trigger').length; i++ ) {
 
 function request(page) {
 	const request = new XMLHttpRequest()
+	// var url = "http://github.com/miodragvukovic/newstuff/blob/master/"+page+".html"
 	var url = "https://cdn.jsdelivr.net/gh/miodragvukovic/newstuff/"+page+".html"
 	request.open('get', url, true)
 	request.onreadystatechange = function() {
