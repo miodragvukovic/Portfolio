@@ -80,6 +80,7 @@ function request(page) {
 	}
 	request.send()
 }
+request("homepage")
 function homeMovement() {
 	var corrnerWheel = document.querySelector('.top-corrner-wheels')
 	var showcase = document.querySelector('.homepage-showcase')
@@ -114,7 +115,6 @@ function homeMovement() {
 		// }
 	})
 }
-homeMovement()
 
 function check() {
 	if ( document.getElementsByClassName('section')[1].classList.contains('homepage') ) {

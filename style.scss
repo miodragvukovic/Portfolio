@@ -18,7 +18,8 @@ body {
 	font-size: calc(1rem + 1.5vh);
 	line-height: normal;
 	color: $white;
-	// font-family: 'Righteous', cursive;
+	background: $black;
+	font-family: 'Montserrat', sans-serif;
 }
 h1 {
 	font-size: calc(1rem + 10vh);
@@ -676,7 +677,11 @@ main {
 		display: inline-block;
 		-webkit-text-stroke: 1px $white;
 		color: transparent;
+		// font-weight: 900;
 		cursor: default;
+		transform-origin: top right;
+		transition: all 750ms cubic-bezier(0.645, 0.045, 0.355, 1);
+		transform: scale3d(0, 0, 1);
 		&:before, &:after {
 			content: attr(data-text);
 			position: absolute;
@@ -708,6 +713,7 @@ main {
 	position: absolute;
 	top: -5vh;
 	left: -5vw;
+	transform: translate3d(-15vw, -15vw, 0);
 	.wheel {
 		transition: 0s;
 	}
@@ -758,6 +764,45 @@ main {
 	}
 }
 
+@keyframes showcase-b {
+	0% { transform: scale3d(1, 1, 1); }
+	50% { transform: scale3d(1.25, 1.25, .5); color: $white;}
+	100% { transform: scale3d(1, 1, 1); }
+}
 
+@keyframes showcase-a {
+	0% { transform: scale3d(1, 1, 1); }
+	50% { transform: scale3d(1.12, 1.12, .5); }
+	100% { transform: scale3d(1, 1, 1); }
+}
+
+.homepage.active {
+	.top-corrner-wheels {
+		transition-delay: .5s;
+		transform: translate3d(0, 0, 0);
+	}
+	.homepage-showcase {
+		h1 {
+			transform: scale3d(1, 1, 1);
+			&:after {
+				animation: showcase-a 1s ease-out;
+				
+			}
+			&:before {
+				animation: showcase-b 1s ease-out;
+			}
+		}
+	}
+}
+
+@for $sc from 1 to 5 {
+	.homepage-showcase .text-box:nth-child(#{$sc}) h1 {
+		transition-delay: 0.7s + (.4s * $sc);
+	}
+	.homepage-showcase .text-box:nth-child(#{$sc}) h1:before,
+	.homepage-showcase .text-box:nth-child(#{$sc}) h1:after {
+		animation-delay: .8 + (.5s * $sc);
+	}
+}
 
 
