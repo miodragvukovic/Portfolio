@@ -3,6 +3,7 @@ var disableClick = false
 setTimeout(() => {
 	document.querySelector('.tha-machine').classList.add('active')
 	document.querySelector('.nav').classList.add('active')
+	request("homepage")
 }, 100)
 
 const degToRad = Math.PI * 2 / 360
@@ -49,8 +50,8 @@ for ( let i = 0; i < document.getElementsByClassName('trigger').length; i++ ) {
 
 function request(page) {
 	const request = new XMLHttpRequest()
-	// var url = "http://github.com/miodragvukovic/newstuff/blob/master/"+page+".html"
-	var url = "https://cdn.jsdelivr.net/gh/miodragvukovic/newstuff/"+page+".html"
+	var url = "https://raw.githubusercontent.com/miodragvukovic/newstuff/master/"+page+".html"
+	// var url = "https://cdn.jsdelivr.net/gh/miodragvukovic/newstuff/"+page+".html"
 	request.open('get', url, true)
 	request.onreadystatechange = function() {
 		if ( request.readyState == 3 ) {
@@ -80,39 +81,21 @@ function request(page) {
 	}
 	request.send()
 }
-request("homepage")
+
 function homeMovement() {
+	console.log('rrr')
 	var corrnerWheel = document.querySelector('.top-corrner-wheels')
-	var showcase = document.querySelector('.homepage-showcase')
+	var homeCircle = document.querySelector('.home-circle')
 	var move = 0
 	var moveLetters = 0
 	var truth = true
 	document.querySelector('.homepage').addEventListener('mousemove', function(e){
 		const x = e.clientX
 		move++
+		console.log(x)
 		corrnerWheel.children[0].style.transform = matrixRotate(move * 0.3)
 		corrnerWheel.children[1].style.transform = "translate(90%, -25%) scale(.9) rotate3d(0, 0, 1, -"+move * 0.3+"deg)"
 		corrnerWheel.children[2].style.transform = "translate(-35%, 90%) scale(.9) rotate3d(0, 0, 1, -"+move * 0.3+"deg)"
-		// if ( moveLetters >= 200 ) {
-		// 	truth = false
-		// } else if ( moveLetters == 0 ) {
-		// 	truth = true
-		// }
-		// if ( truth ) {
-		// 	moveLetters++
-		// } else {
-		// 	moveLetters--
-		// }
-		// console.log(moveLetters)
-		// for ( show of showcase.children ) {
-		// 	show.style.color = "rgb("+ moveLetters / 2 +", "+ moveLetters / 2 +", "+ moveLetters / 2 +")"
-		// }
-		// for ( show of showcase.getElementsByClassName('go-left') ) {
-		// 	show.style.transform = "translate3d(-"+ moveLetters * 0.1 +"px, 0, 0)"
-		// }
-		// for ( show of showcase.getElementsByClassName('go-right') ) {
-		// 	show.style.transform = "translate3d("+ moveLetters * 0.1 +"px, 0, 0)"
-		// }
 	})
 }
 
@@ -120,16 +103,17 @@ function check() {
 	if ( document.getElementsByClassName('section')[1].classList.contains('homepage') ) {
 		homeMovement()
 	}
-	let container = document.getElementsByClassName('page-content')[1]
+	let container = document.getElementsByClassName('page-content')[0]
+	let els = document.getElementsByClassName('count')
 	if ( container.offsetHeight > window.innerHeight ) {
 		container.parentElement.addEventListener('scroll', () => {
 			var scrolledFromTop = container.parentElement.scrollTop
-			// console.log(scrolledFromTop)
+			for ( let el of els ) {
+				scrolledFromTop + window.innerHeight * 0.77 > el.offsetTop ? el.classList.add('active') : el.classList.remove('active')
+			}
+			console.log(scrolledFromTop)
 		})
 	} else {
 		return false
 	}
 }
-
-
-

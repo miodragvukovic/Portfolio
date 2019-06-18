@@ -15,7 +15,7 @@ html {
 	font-size: 62.5%;
 }
 body {
-	font-size: calc(1rem + 1.5vh);
+	font-size: calc(1rem + 1vh);
 	line-height: normal;
 	color: $white;
 	background: $black;
@@ -23,6 +23,7 @@ body {
 }
 h1 {
 	font-size: calc(1rem + 10vh);
+	margin-bottom: 1vh;
 }
 h2 {
 	font-size: calc(1rem + 6vh);
@@ -32,6 +33,11 @@ h3 {
 }
 h4 {
 	font-size: calc(1rem + 3vh);
+	margin-bottom: 5vh;
+}
+p, span, blockquote {
+	margin-bottom: 5vh;
+	line-height: calc(1rem + 3vh);
 }
 
 a:link,
@@ -84,7 +90,7 @@ main {
 	overflow: auto;
 	background: $black;
 	transform: translate3d(0, 100%, 0);
-	text-align: right;
+	// text-align: right;
 	// &:before {
 	// 	content: '';
 	// 	position: absolute;
@@ -155,6 +161,8 @@ main {
 			position: relative;
 			overflow-x: hidden;
 			padding: 5px 10px;
+			font-size: calc(1rem + 1.5vh);
+			margin: 0;
 			&:before {
 				content: '';
 				position: absolute;
@@ -212,7 +220,7 @@ main {
 
 .page-content {
 	position: relative;
-	height: 100%;
+	height: auto;
 	width: 100%;
 	z-index: 2;
 }
@@ -239,7 +247,7 @@ main {
 		animation:glitchOne 2s infinite linear alternate-reverse;
 	}
 }
-@keyframes glitchOne{
+@keyframes glitchOne {
   $steps:20;
   @for $i from 0 through $steps{
     #{percentage($i*(1/$steps))}{
@@ -248,7 +256,7 @@ main {
   }
 }
 
-@keyframes glitchTwo{
+@keyframes glitchTwo {
   $steps:20;
   @for $i from 0 through $steps{
     #{percentage($i*(1/$steps))}{
@@ -728,40 +736,15 @@ main {
 	}
 }
 
-.home-circle {
+.logo {
 	position: absolute;
-	top: -20vw;
-	left: -20vw;
-	height: 30vw;
-	width: 30vw;
-	transform: rotate(-45deg);
-	.left, .right{
-		position: absolute;
-		top: 0;
-		left: 0;
-		height: 100%;
-		width: 50%;
-		transform-origin: right center;
-		overflow: hidden;
-		&:before {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			height: calc(100% - .6vw);
-			width: calc(200% - .6vw);
-			border: .3vh solid $white;
-			border-radius: 50%;
-		}
-	}
-	.right {
-		left: 50%;
-		transform-origin: left center;
-		&:before {
-			left: -100%;
-			transform: scale(.95);
-		}
-	}
+	width: 35vw;
+	border: 1px solid $white;
+	text-align: center;
+	top: 30vh;
+	left: -8vw;
+	transform: rotate3d(0, 0, 1, -45deg);
+	transform-origin: left;
 }
 
 @keyframes showcase-b {
@@ -777,6 +760,13 @@ main {
 }
 
 .homepage.active {
+	.home-circle {
+		transition-delay: .5s;
+		opacity: 1;
+	}
+	.page-content {
+		height: 100%;
+	}
 	.top-corrner-wheels {
 		transition-delay: .5s;
 		transform: translate3d(0, 0, 0);
@@ -785,11 +775,11 @@ main {
 		h1 {
 			transform: scale3d(1, 1, 1);
 			&:after {
-				animation: showcase-a 1s ease-out;
+				animation: showcase-a .5s ease-out;
 				
 			}
 			&:before {
-				animation: showcase-b 1s ease-out;
+				animation: showcase-b .5s ease-out;
 			}
 		}
 	}
@@ -797,12 +787,36 @@ main {
 
 @for $sc from 1 to 5 {
 	.homepage-showcase .text-box:nth-child(#{$sc}) h1 {
-		transition-delay: 0.7s + (.4s * $sc);
+		transition-delay: 0.5s + (.2s * $sc);
 	}
 	.homepage-showcase .text-box:nth-child(#{$sc}) h1:before,
 	.homepage-showcase .text-box:nth-child(#{$sc}) h1:after {
-		animation-delay: .8 + (.5s * $sc);
+		animation-delay: .6 + (.3s * $sc);
 	}
 }
 
+.show-up {
+	opacity: 0;
+	transform: translate3d(0, 5vh, 0);
+}
 
+.professional.active {
+	.show-up {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+	.count {
+		opacity: 0;
+		transform: translate3d(-5vh, 0, 0);
+		&:nth-child(even) {
+			transform: translate3d(5vh, 0, 0);
+		}
+		&.active {
+			opacity: 1;
+			transform: translate3d(0, 0, 0);
+		}
+	}
+	p {
+		text-align: left;
+	}
+}
