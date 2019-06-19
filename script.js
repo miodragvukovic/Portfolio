@@ -1,4 +1,5 @@
 var disableClick = false
+var containerIncrement = 0
 
 setTimeout(() => {
 	document.querySelector('.tha-machine').classList.add('active')
@@ -22,6 +23,7 @@ function matrixRotate(num) {
 for ( let i = 0; i < document.getElementsByClassName('trigger').length; i++ ) {
 	var trigger = document.getElementsByClassName('trigger')[i]
 	trigger.addEventListener('click', function(){
+		containerIncrement = 1
 		let selected = this.getAttribute('data-target')
 		let selectedAnchorValue = ((i + 1) * 16.666) - 8.333
 		let matrixParse = (window.innerHeight / 100) *  selectedAnchorValue
@@ -83,19 +85,31 @@ function request(page) {
 }
 
 function homeMovement() {
-	console.log('rrr')
 	var corrnerWheel = document.querySelector('.top-corrner-wheels')
-	var homeCircle = document.querySelector('.home-circle')
+	var logo = document.querySelector('.logo')
 	var move = 0
+	var colorMove = 0
+	var colorMoveBool = true
 	var moveLetters = 0
 	var truth = true
 	document.querySelector('.homepage').addEventListener('mousemove', function(e){
 		const x = e.clientX
 		move++
-		console.log(x)
 		corrnerWheel.children[0].style.transform = matrixRotate(move * 0.3)
 		corrnerWheel.children[1].style.transform = "translate(90%, -25%) scale(.9) rotate3d(0, 0, 1, -"+move * 0.3+"deg)"
-		corrnerWheel.children[2].style.transform = "translate(-35%, 90%) scale(.9) rotate3d(0, 0, 1, -"+move * 0.3+"deg)"
+		corrnerWheel.children[2].style.transform = "translate(-12%, 95%) scale(.9) rotate3d(0, 0, 1, -"+move * 0.3+"deg)"
+		if ( colorMoveBool ) {
+			colorMove++
+		} else {
+			colorMove--
+		}
+		if (colorMove >= 255) {
+			colorMoveBool = false
+		} else if ( colorMove <= 0 ) {
+			colorMoveBool = true
+		}
+		logo.style.background = "rgb("+ colorMove +", "+ colorMove +", "+ colorMove +")"
+		logo.style.color = "rgb("+ (255 - colorMove) +", "+ (255 - colorMove) +", "+ (255 - colorMove) +")"
 	})
 }
 
@@ -103,7 +117,7 @@ function check() {
 	if ( document.getElementsByClassName('section')[1].classList.contains('homepage') ) {
 		homeMovement()
 	}
-	let container = document.getElementsByClassName('page-content')[0]
+	let container = document.getElementsByClassName('page-content')[containerIncrement]
 	let els = document.getElementsByClassName('count')
 	if ( container.offsetHeight > window.innerHeight ) {
 		container.parentElement.addEventListener('scroll', () => {
@@ -111,7 +125,6 @@ function check() {
 			for ( let el of els ) {
 				scrolledFromTop + window.innerHeight * 0.77 > el.offsetTop ? el.classList.add('active') : el.classList.remove('active')
 			}
-			console.log(scrolledFromTop)
 		})
 	} else {
 		return false

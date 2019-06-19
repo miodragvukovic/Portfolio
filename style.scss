@@ -732,7 +732,7 @@ main {
 		transform: translate(90%, -25%) scale(.9) rotate(0deg);
 	}
 	.wheel.lower {
-		transform: translate(-35%, 90%) scale(.9) rotate(0deg);
+		transform: translate(-12%, 95%) scale(.9) rotate(0deg);
 	}
 }
 
@@ -745,6 +745,7 @@ main {
 	left: -8vw;
 	transform: rotate3d(0, 0, 1, -45deg);
 	transform-origin: left;
+	transition: none;
 }
 
 @keyframes showcase-b {
