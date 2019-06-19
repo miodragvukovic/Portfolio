@@ -492,9 +492,6 @@ main {
 
 	}
 }
-.pointer {
-	
-}
 
 .links-container .link {
 	position: relative;
@@ -743,9 +740,11 @@ main {
 	text-align: center;
 	top: 30vh;
 	left: -8vw;
+	opacity: 0;
 	transform: rotate3d(0, 0, 1, -45deg);
 	transform-origin: left;
 	transition: none;
+	transition: opacity .5s ease-out;
 }
 
 .square-overlay {
@@ -778,7 +777,6 @@ main {
 		height: 20vh;
 		width: 20vh;
 		border: 1px solid rgba(255,255,255,.3);
-		// border-radius: 50%;
 		transform: rotate(45deg);
 		transition: 4s linear;
 		&:hover {
@@ -802,8 +800,8 @@ main {
 }
 
 .homepage.active {
-	.home-circle {
-		transition-delay: .5s;
+	.logo {
+		transition-delay: 1s;
 		opacity: 1;
 	}
 	.page-content {
@@ -835,6 +833,9 @@ main {
 	.homepage-showcase .text-box:nth-child(#{$sc}) h1:after {
 		animation-delay: .6 + (.3s * $sc);
 	}
+	.show-up:nth-child(#{$sc}) {
+		transition-delay: .2s * $sc;
+	}
 }
 
 .show-up {
@@ -849,10 +850,7 @@ main {
 	}
 	.count {
 		opacity: 0;
-		transform: translate3d(-5vh, 0, 0);
-		&:nth-child(even) {
-			transform: translate3d(5vh, 0, 0);
-		}
+		transform: translate3d(0, 5vh, 0);
 		&.active {
 			opacity: 1;
 			transform: translate3d(0, 0, 0);
