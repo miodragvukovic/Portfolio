@@ -787,12 +787,70 @@ main {
 	}
 }
 
+.sc {
+	position: relative;
+	height: 100vh;
+	width: 100%;
+	border: 1px solid red;
+	perspective: 500px;
+	.dot {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		background: red;
+		transform-style: preserve-3d;
+		transition: .2s ease-out;
+	}
+	.circle {
+		position: absolute;
+		height: 50vh;
+		width: 50vh;
+		border: 1px solid red;
+		border-radius: 50%;
+		transform: translate3d(-50%, -50%, 0);
+		backface-visibility: visible;
+		&.circle-1 {
+		}
+		&.circle-2 {
+			transform: translate3d(-50%, -50%, 0) rotateX(-90deg);
+		}
+		&.circle-3 {
+			transform: translate3d(-50%, -50%, 0) rotateY(90deg);
+		}
+		&.circle-4 {
+			transform: translate3d(-50%, -50%, 0) rotateX(45deg);
+		}
+		&.circle-5 {
+			transform: translate3d(-50%, -50%, 0) rotateX(-45deg);
+		}
+		&.circle-6 {
+			transform: translate3d(-35%, -50%, 0) rotateY(90deg) scale(.95);
+		}
+		&.circle-7 {
+			transform: translate3d(-65%, -50%, 0) rotateY(90deg) scale(.95);
+		}
+		&.circle-8 {
+			transform: translate3d(-18%, -50%, 0) rotateY(90deg) scale(.75);
+		}
+		&.circle-9 {
+			transform: translate3d(-82%, -50%, 0) rotateY(90deg) scale(.75);
+		}
+		&.circle-10 {
+			transform: translate3d(-2%, -50%, 0) rotateY(90deg) scale(.3);
+		}
+		&.circle-11 {
+			transform: translate3d(-98%, -50%, 0) rotateY(90deg) scale(.3);
+		}
+	}
+}
+
+
 .slider {
 	position: relative;
-	height: 350px;
+	height: 100%;
 	width: 100%;
-	top: 50px;
 	overflow-x: hidden;
+	background: rgba(255, 255, 255, .2);
 	.inner {
 		position: relative;
 		width: 600%;
@@ -820,7 +878,7 @@ main {
 					opacity: .7;
 					transition: .3s ease-out;
 					transition-delay: 1.2s;
-					background: #000;
+					background: rgba(255, 255, 255, .5);
 				}
 				img {
 					position: absolute;
@@ -850,7 +908,7 @@ main {
 				width: 50%;
 				top: 0;
 				left: 0;
-				background: #000;
+				background: rgba(255, 255, 255, .4);
 				transition: .3s ease-out;
 				transition-delay: .5s;
 				z-index: 1;
@@ -865,15 +923,15 @@ main {
 				top: 50%;
 				left: 50%;
 				transform: translate(-50%, -50%) scale(0);
-				color: $black;
-				font-size: 7.5rem;
+				color: $white;
+				font-size: 5vh;
 				z-index: 5;
 				transition: .5s;
 				transition-delay: 1s;
 				&:first-letter {
-					color: red;
+					color: $red;
 					text-decoration: underline;
-					text-decoration-color: $black;
+					text-decoration-color: $red;
 				}
 			}
 			&.active {
@@ -1001,5 +1059,11 @@ main {
 	}
 	p {
 		text-align: left;
+	}
+}
+
+.skills.active {
+	.page-content {
+		height: 100%;
 	}
 }

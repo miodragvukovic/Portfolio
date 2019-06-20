@@ -113,10 +113,20 @@ function homeMovement() {
 	})
 }
 
+function personalMovement() {
+	document.querySelector('.sc').addEventListener('mousemove', (e) => {
+	  document.querySelector('.dot').style.transform = "rotateX("+e.pageX / 10+"deg) rotateY("+e.pageY / 10+"deg)"
+	})
+}
+
 function check() {
-	if ( document.getElementsByClassName('section')[1].classList.contains('homepage') ) {
-		homeMovement()
-	}
+	var section = document.getElementsByClassName('section')[1]
+	section.classList.contains('homepage') ? homeMovement() : false
+	section.classList.contains('personal') ? personalMovement() : false
+	section.classList.contains('skills') ? initSlider() : false
+	// if ( document.getElementsByClassName('section')[1].classList.contains('homepage') ) {
+	// 	homeMovement()
+	// }
 	let container = document.getElementsByClassName('page-content')[containerIncrement]
 	let els = document.getElementsByClassName('count')
 	if ( container.offsetHeight > window.innerHeight ) {
@@ -132,4 +142,79 @@ function check() {
 	} else {
 		return false
 	}
+}
+
+function initSlider() {
+	var sliderIndex = 0
+	var istina = false
+	var hover = false
+	var start, end, result
+	var slides = document.getElementsByClassName('slide')
+	var slider = document.querySelector('.slider')
+	// document.querySelector('.inner').style.width = ""+slider.length+"00%";
+	function doTheJob() {
+	  document.querySelector('.inner').style.left = "-"+ sliderIndex +"00%"
+	  for ( let slide of slides ) {
+	    slide.classList.remove('active')
+	  }
+	  document.querySelector('.slide'+ (sliderIndex+1) +'').classList.add('active')
+	}
+	var interval = setInterval(function(){
+	  if ( hover == false ) {
+	    if ( sliderIndex == slides.length - 1) {
+	      istina = true
+	    } else if ( sliderIndex == 0 ) {
+	      istina = false
+	    }
+	    if ( istina == false ) {
+	      sliderIndex++
+	      doTheJob()
+	    } else {
+	      sliderIndex--
+	      doTheJob()
+	    }
+	  }
+	}, 5000)
+	slider.addEventListener('mouseenter', () => hover = true)
+	slider.addEventListener('mouseleave', () => hover = false)
+	document.querySelector('.left-arrow').addEventListener('click', function() {
+	  if ( sliderIndex < 1 ) {
+	    return false
+	  } else {
+	    var orient = Number(this.getAttribute('data-value'))
+	    sliderIndex = sliderIndex + orient
+	    doTheJob()
+	  }
+	})
+	document.querySelector('.right-arrow').addEventListener('click', function() {
+	  if ( sliderIndex + 1 >= slides.length ) {
+	    return false
+	  } else {
+	    var orient = Number(this.getAttribute('data-value'))
+	    sliderIndex = sliderIndex + orient
+	    doTheJob()
+	  }
+	})
+	slider.addEventListener('mousedown', function(e){
+	  start = e.pageX
+	})
+	slider.addEventListener('mouseup', function(e){
+	  end = e.pageX
+	  result = start - end
+	  if ( result >= 20 ) {
+	    if ( sliderIndex + 1 >= slides.length ) {
+	      return false
+	    } else {
+	      sliderIndex = sliderIndex + 1
+	      doTheJob()
+	    }
+	  } else if ( result < -20 ) {
+	    if ( sliderIndex < 1 ) {
+	      return false
+	    } else {
+	      sliderIndex = sliderIndex - 1
+	      doTheJob()
+	    }
+	  }
+	})
 }
