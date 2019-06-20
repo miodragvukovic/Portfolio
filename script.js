@@ -1,11 +1,11 @@
 var disableClick = false
 var containerIncrement = 0
 
-setTimeout(() => {
+window.onload = function(){
 	document.querySelector('.tha-machine').classList.add('active')
 	document.querySelector('.nav').classList.add('active')
 	request("homepage")
-}, 100)
+}
 
 const degToRad = Math.PI * 2 / 360
 
@@ -78,13 +78,13 @@ function request(page) {
 				disableClick = false
 				document.querySelector('.loading-line').classList.remove('active')
 			}, 800)
-			check()
+			check(page)
 		}
 	}
 	request.send()
 }
 
-function homeMovement() {
+function homepageFunc() {
 	var corrnerWheel = document.querySelector('.top-corrner-wheels')
 	var logo = document.querySelector('.logo')
 	var move = 0
@@ -113,20 +113,7 @@ function homeMovement() {
 	})
 }
 
-function personalMovement() {
-	document.querySelector('.sc').addEventListener('mousemove', (e) => {
-	  document.querySelector('.dot').style.transform = "rotateX("+e.pageX / 10+"deg) rotateY("+e.pageY / 10+"deg)"
-	})
-}
-
-function check() {
-	var section = document.getElementsByClassName('section')[1]
-	section.classList.contains('homepage') ? homeMovement() : false
-	section.classList.contains('personal') ? personalMovement() : false
-	section.classList.contains('skills') ? initSlider() : false
-	// if ( document.getElementsByClassName('section')[1].classList.contains('homepage') ) {
-	// 	homeMovement()
-	// }
+function professionalFunc() {
 	let container = document.getElementsByClassName('page-content')[containerIncrement]
 	let els = document.getElementsByClassName('count')
 	if ( container.offsetHeight > window.innerHeight ) {
@@ -144,7 +131,18 @@ function check() {
 	}
 }
 
-function initSlider() {
+function personalFunc() {
+	document.querySelector('.sc').addEventListener('mousemove', (e) => {
+	  document.querySelector('.dot').style.transform = "rotateX("+e.pageX / 10+"deg) rotateY("+e.pageY / 10+"deg)"
+	})
+}
+
+function check(param) {
+	var section = document.getElementsByClassName('section')[1]
+	section.classList.contains(param) ? window[param + "Func"]() : false
+}
+
+function skillsFunc() {
 	var sliderIndex = 0
 	var istina = false
 	var hover = false
