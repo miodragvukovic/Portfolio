@@ -554,10 +554,10 @@ main {
 .engine {
 	perspective: 500px;
 	opacity: .2;
-	position: absolute;
-	bottom: 27vh;
+	position: fixed;
+	bottom: 34vh;
 	left: -14vw;
-	transform: scale(3.5) rotateX(-42deg);
+	transform: scale(4.5) rotateX(-42deg);
 	.right-side {
 		position: relative;
 		transform: rotateY(30deg);
@@ -603,6 +603,7 @@ main {
 				top: 0;
 				left: 0;
 				animation: left 1s linear infinite;
+				animation-play-state: paused;
 				&:before {
 					position: absolute;
 					content: '';

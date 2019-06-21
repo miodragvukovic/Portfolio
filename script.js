@@ -4,7 +4,7 @@ var containerIncrement = 0
 window.onload = function(){
 	document.querySelector('.tha-machine').classList.add('active')
 	document.querySelector('.nav').classList.add('active')
-	// request("homepage")
+	request("homepage")
 }
 
 const degToRad = Math.PI * 2 / 360
@@ -116,6 +116,20 @@ function homepageFunc() {
 function professionalFunc() {
 	let container = document.getElementsByClassName('page-content')[containerIncrement]
 	let els = document.getElementsByClassName('count')
+	container.addEventListener('wheel', (e) => {
+		if ( e.deltaY > 2 || e.deltaY < -2  ) {
+			for ( rail of document.getElementsByClassName('arrow') ) {
+				rail.style.animationPlayState = "running"
+			}
+			
+		} else {
+			for ( rail of document.getElementsByClassName('rail') ) {
+				rail.style.animationPlayState = "paused"
+			}
+			console.log(e.deltaY)
+		}
+		
+	})
 	container.addEventListener('scroll', () => {
 		var scrolledFromTop = container.scrollTop
 		for ( let el of els ) {
