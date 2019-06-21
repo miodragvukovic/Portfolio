@@ -551,124 +551,127 @@ main {
 }
 
 
-// .engine {
-// 	position: absolute;
-// 	bottom: 100px;
-// 	left: -150px;
-// 	.right-side {
-// 		position: relative;
-// 		transform: rotateY(30deg);
-// 		.rail {
-// 			position: absolute;
-// 			display: inline-block;
-// 			left: 50px;
-// 			height: 52px;
-// 			width: 200px;
-// 			border-top: 1px solid $white;
-// 			border-bottom: 1px solid $white;
-// 			border-left: 1px solid $white;
-// 			transform: rotate(-45deg);
-// 			border-top-left-radius: 50px;
-// 			border-bottom-left-radius: 50px;
-// 			&:before {
-// 				position: absolute;
-// 				content: '';
-// 				height: 10px;
-// 				width: 0;
-// 				left: 15px;
-// 				top: 20px;
-// 				background: $white;
-// 				border-top-left-radius: 50px;
-// 				border-bottom-left-radius: 50px;
-// 				animation: radilica 1s linear infinite;
-// 			}
-// 			&:after {
-// 				position: absolute;
-// 				content: '';
-// 				height: 50px;
-// 				width: 50px;
-// 				border: 1px solid $white;
-// 				border-radius: 50%;
-// 				right: -25px;
-// 				top: -1px;
-// 			}
-// 			.arrow {
-// 				height: 50px;
-// 				background: $white;
-// 				width: 50px;
-// 				position: absolute;
-// 				top: 0;
-// 				left: 0;
-// 				animation: left 1s linear infinite;
-// 				&:before {
-// 					position: absolute;
-// 					content: '';
-// 					height: 50px;
-// 					width: 50px;
-// 					background: $white;
-// 					border-radius: 50%;
-// 					left: -25px;
-// 					top: -1px;
-// 				}
-// 				&:after {
-// 					position: absolute;
-// 					content: '';
-// 					height: 50px;
-// 					width: 50px;
-// 					border: 1px solid $black;
-// 					background: $white;
-// 					border-radius: 50%;
-// 					right: -25px;
-// 					top: -1px;
-// 				}
-// 			}
-// 			&.rail1 {
-// 				left: 60px;
+.engine {
+	perspective: 500px;
+	opacity: .2;
+	position: absolute;
+	bottom: 27vh;
+	left: -14vw;
+	transform: scale(3.5) rotateX(-42deg);
+	.right-side {
+		position: relative;
+		transform: rotateY(30deg);
+		.rail {
+			position: absolute;
+			display: inline-block;
+			left: 50px;
+			height: 52px;
+			width: 200px;
+			border-top: 1px solid $white;
+			border-bottom: 1px solid $white;
+			border-left: 1px solid $white;
+			transform: rotate(-45deg);
+			border-top-left-radius: 50px;
+			border-bottom-left-radius: 50px;
+			&:before {
+				position: absolute;
+				content: '';
+				height: 10px;
+				width: 0;
+				left: 15px;
+				top: 20px;
+				background: $white;
+				border-top-left-radius: 50px;
+				border-bottom-left-radius: 50px;
+				animation: radilica 1s linear infinite;
+			}
+			&:after {
+				position: absolute;
+				content: '';
+				height: 50px;
+				width: 50px;
+				border: 1px solid $white;
+				border-radius: 50%;
+				right: -25px;
+				top: -1px;
+			}
+			.arrow {
+				height: 50px;
+				background: $white;
+				width: 50px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				animation: left 1s linear infinite;
+				&:before {
+					position: absolute;
+					content: '';
+					height: 50px;
+					width: 50px;
+					background: $white;
+					border-radius: 50%;
+					left: -25px;
+					top: -1px;
+				}
+				&:after {
+					position: absolute;
+					content: '';
+					height: 50px;
+					width: 50px;
+					border: 1px solid $black;
+					background: $white;
+					border-radius: 50%;
+					right: -25px;
+					top: -1px;
+				}
+			}
+			&.rail1 {
+				left: 60px;
 
-// 			}
-// 			&.rail2 {
-// 				left: 120px;
-// 				&:before {
-// 					animation-delay: .25s;
-// 				}
-// 				.arrow {
-// 					animation-delay: .25s;
-// 				}
+			}
+			&.rail2 {
+				left: 120px;
+				&:before {
+					animation-delay: .25s;
+				}
+				.arrow {
+					animation-delay: .25s;
+				}
 				
-// 			}
-// 			&.rail3 {
-// 				left: 180px;
-// 				&:before {
-// 					animation-delay: .75s;
-// 				}
-// 				.arrow {
-// 					animation-delay: .75s;
-// 				}
-// 			}
-// 			&.rail4 {
-// 				left: 240px;
-// 				&:before {
-// 					animation-delay: .5s;
-// 				}
-// 				.arrow {
-// 					animation-delay: .5s;
-// 				}
-// 			}
-// 		}
-// 	}
+			}
+			&.rail3 {
+				left: 180px;
+				&:before {
+					animation-delay: .75s;
+				}
+				.arrow {
+					animation-delay: .75s;
+				}
+			}
+			&.rail4 {
+				left: 240px;
+				&:before {
+					animation-delay: .5s;
+				}
+				.arrow {
+					animation-delay: .5s;
+				}
+			}
+		}
+	}
 	
-// }
-// @keyframes radilica {
-// 	0% {width: 0;}
-// 	50% {width: 140px;}
-// 	100% {width: 0;}
-// }
+}
+@keyframes radilica {
+	0% {width: 0;}
+	50% {width: 140px;}
+	100% {width: 0;}
+}
 
-// @keyframes left {
-// 	0% {left: 0;}
-// 	50% {left: 160px;}
-// 	100% {left: 0;}
-// }
+@keyframes left {
+	0% {left: 0;}
+	50% {left: 160px;}
+	100% {left: 0;}
+}
 
 .homepage-showcase {
 	position: relative;
@@ -1078,7 +1081,7 @@ main {
 	p, h4, blockquote {
 		text-align: left;
 		margin-right: 15px;
-		pointer-events: none;
+		// pointer-events: none;
 	}
 }
 

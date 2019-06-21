@@ -4,7 +4,7 @@ var containerIncrement = 0
 window.onload = function(){
 	document.querySelector('.tha-machine').classList.add('active')
 	document.querySelector('.nav').classList.add('active')
-	request("homepage")
+	// request("homepage")
 }
 
 const degToRad = Math.PI * 2 / 360
@@ -125,7 +125,8 @@ function professionalFunc() {
 }
 
 function personalFunc() {
-	document.querySelector('.sc').addEventListener('mousemove', (e) => {
+	document.getElementsByClassName('section')[1].addEventListener('mousemove', (e) => {
+		console.log('rrr')
 	  document.querySelector('.dot').style.transform = "rotateX("+e.pageX / 10+"deg) rotateY("+e.pageY / 10+"deg)"
 	})
 }
