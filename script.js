@@ -116,30 +116,18 @@ function homepageFunc() {
 function professionalFunc() {
 	let container = document.getElementsByClassName('page-content')[containerIncrement]
 	let els = document.getElementsByClassName('count')
-	if ( container.offsetHeight > window.innerHeight ) {
-		container.parentElement.addEventListener('scroll', () => {
-			var scrolledFromTop = container.parentElement.scrollTop
-			for ( let el of els ) {
-				scrolledFromTop + window.innerHeight * 0.77 > el.offsetTop ? el.classList.add('active') : el.classList.remove('active')
-			}
-			if ( scrolledFromTop <=  container.offsetHeight - window.innerHeight + (window.innerHeight / 10) + (window.innerHeight / 20) + 30) {
-				document.querySelector('.square-overlay').style.transform = "translate3d(0, "+scrolledFromTop+"px, 0)"
-			}
-		})
-	} else {
-		return false
-	}
+	container.addEventListener('scroll', () => {
+		var scrolledFromTop = container.scrollTop
+		for ( let el of els ) {
+			scrolledFromTop + window.innerHeight * 0.77 > el.offsetTop ? el.classList.add('active') : el.classList.remove('active')
+		}
+	})
 }
 
 function personalFunc() {
 	document.querySelector('.sc').addEventListener('mousemove', (e) => {
 	  document.querySelector('.dot').style.transform = "rotateX("+e.pageX / 10+"deg) rotateY("+e.pageY / 10+"deg)"
 	})
-}
-
-function check(param) {
-	var section = document.getElementsByClassName('section')[1]
-	section.classList.contains(param) ? window[param + "Func"]() : false
 }
 
 function skillsFunc() {
@@ -215,4 +203,9 @@ function skillsFunc() {
 	    }
 	  }
 	})
+}
+
+function check(param) {
+	var section = document.getElementsByClassName('section')[1]
+	section.classList.contains(param) ? window[param + "Func"]() : false
 }
