@@ -1136,6 +1136,12 @@ main {
 	transform: translate3d(0, 5vh, 0);
 }
 
+.scroll-negator {
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+}
+
 .professional.active,
 .personal.active {
 	overflow: hidden;
@@ -1157,7 +1163,9 @@ main {
 	}
 	.page-content {
 		height: 100%;
-		overflow: auto;
+		overflow-y: auto;
+		width: calc(100% + 25px);
+		padding-right: 25px;
 	}
 	p, h4, blockquote {
 		text-align: left;
