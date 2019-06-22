@@ -89,19 +89,10 @@ main {
 	padding: 5vh 25vw 5vh 5vw;
 	overflow: auto;
 	transform: translate3d(0, 100%, 0);
-	// text-align: right;
-	// &:before {
-	// 	content: '';
-	// 	position: absolute;
-	// 	left: 0;
-	// 	top: 0;
-	// 	height: 1vh;
-	// 	width: 100%;
-	// 	background: rgba(255, 255, 255, .2);
-	// }
 	&.active {
 		transform: translate3d(0, 0, 0);
 		z-index: 1;
+		background: $black;
 	}
 	&.home {
 	}
@@ -861,13 +852,91 @@ main {
 	100% {border-radius: 50%;}
 }
 
+.big-bad-wheel-wrap {
+	position: absolute;
+	height: 100vh;
+	width: 40vw;
+	right: 24vw;
+	overflow: hidden;
+	top: 0;
+	z-index: -1;
+	.big-bad-wheel {
+		position: absolute;
+		height: 120vh;
+		width: 120vh;
+		top: -10vh;
+		left: 10vw;
+		border-radius: 50%;
+		transform-origin: center center;
+		border: 1px solid rgba(255, 255, 255, 1);
+		transition: none;
+		&:after {
+			content: '';
+			position: absolute;
+			height: calc(120vh - 2px);
+			width: calc(120vh - 2px);
+			top: 0;
+			left: 0;
+			border-radius: 50%;
+			background: $black;
+		}
+	}
+	.spike {
+		position: absolute;
+		height: 10%;
+		width: 60%;
+		top: 45%;
+		left: -10%;
+		transform-origin: right center;
+		border-top-left-radius: 30%;
+		border-bottom-left-radius: 30%;
+		background: $black;
+		border: 1px solid rgba(255, 255, 255, 1);
+	}
+	.screws {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		z-index: 1;
+	}
+	.screw {
+		position: absolute;
+		display: block;
+		height: 10vh;
+		width: 35vh;
+		transform-origin: left center;
+		&:after {
+			content: '';
+			position: absolute;
+			right: 0;
+			top: 0;
+			height: 10vh;
+			width: 10vh;
+			background: black;
+			border: 1px solid $white;
+			border-radius: 50%;
+		}
+	}
+}
+
+@for $spike from 1 to 19 {
+	.spike:nth-child(#{$spike}) {
+		transform: rotate(20deg * $spike);
+	}
+}
+
+@for $screw from 1 to 6 {
+	.screw:nth-child(#{$screw}) {
+		transform: translate(0, -50%) rotate(72deg * $screw);
+	}
+}
 
 .slider {
 	position: relative;
 	height: 100%;
 	width: 100%;
 	overflow-x: hidden;
-	background: rgba(255, 255, 255, .2);
+	// background: rgba(255, 255, 255, .2);
 	.inner {
 		position: relative;
 		width: 600%;
@@ -895,7 +964,8 @@ main {
 					opacity: .7;
 					transition: .3s ease-out;
 					transition-delay: 1.2s;
-					background: rgba(255, 255, 255, .5);
+					// background: rgba(255, 255, 255, .5);
+					border-left: 1px solid $white;
 				}
 				img {
 					position: absolute;
@@ -925,7 +995,9 @@ main {
 				width: 50%;
 				top: 0;
 				left: 0;
-				background: rgba(255, 255, 255, .4);
+				// background: rgba(255, 255, 255, .4);
+				background: $black;
+				border-bottom: 1px solid $white;
 				transition: .3s ease-out;
 				transition-delay: .5s;
 				z-index: 1;
@@ -934,6 +1006,8 @@ main {
 				left: 50%;
 				top: unset;
 				bottom: 0;
+				border-top: 1px solid $white;
+				border-bottom: 1px solid transparent;
 			}
 			.label {
 				position: absolute;
@@ -961,10 +1035,10 @@ main {
 					}
 				}
 				&:before {
-					bottom: -100%;
+					bottom: -101%;
 				}
 				&:after {
-					top: -100%;
+					top: -101%;
 				}
 			}
 		}

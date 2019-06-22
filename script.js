@@ -116,22 +116,9 @@ function homepageFunc() {
 function professionalFunc() {
 	let container = document.getElementsByClassName('page-content')[containerIncrement]
 	let els = document.getElementsByClassName('count')
-	container.addEventListener('wheel', (e) => {
-		if ( e.deltaY > 2 || e.deltaY < -2  ) {
-			for ( rail of document.getElementsByClassName('arrow') ) {
-				rail.style.animationPlayState = "running"
-			}
-			
-		} else {
-			for ( rail of document.getElementsByClassName('rail') ) {
-				rail.style.animationPlayState = "paused"
-			}
-			console.log(e.deltaY)
-		}
-		
-	})
 	container.addEventListener('scroll', () => {
 		var scrolledFromTop = container.scrollTop
+		document.querySelector('.big-bad-wheel').style.transform = "rotate3d(0, 0, 1, "+ scrolledFromTop / 20 +"deg)"
 		for ( let el of els ) {
 			scrolledFromTop + window.innerHeight * 0.77 > el.offsetTop ? el.classList.add('active') : el.classList.remove('active')
 		}
@@ -140,7 +127,6 @@ function professionalFunc() {
 
 function personalFunc() {
 	document.getElementsByClassName('section')[1].addEventListener('mousemove', (e) => {
-		console.log('rrr')
 	  document.querySelector('.dot').style.transform = "rotateX("+e.pageX / 10+"deg) rotateY("+e.pageY / 10+"deg)"
 	})
 }
@@ -160,22 +146,22 @@ function skillsFunc() {
 	  }
 	  document.querySelector('.slide'+ (sliderIndex+1) +'').classList.add('active')
 	}
-	var interval = setInterval(function(){
-	  if ( hover == false ) {
-	    if ( sliderIndex == slides.length - 1) {
-	      istina = true
-	    } else if ( sliderIndex == 0 ) {
-	      istina = false
-	    }
-	    if ( istina == false ) {
-	      sliderIndex++
-	      doTheJob()
-	    } else {
-	      sliderIndex--
-	      doTheJob()
-	    }
-	  }
-	}, 5000)
+	// var interval = setInterval(function(){
+	//   if ( hover == false ) {
+	//     if ( sliderIndex == slides.length - 1) {
+	//       istina = true
+	//     } else if ( sliderIndex == 0 ) {
+	//       istina = false
+	//     }
+	//     if ( istina == false ) {
+	//       sliderIndex++
+	//       doTheJob()
+	//     } else {
+	//       sliderIndex--
+	//       doTheJob()
+	//     }
+	//   }
+	// }, 5000)
 	slider.addEventListener('mouseenter', () => hover = true)
 	slider.addEventListener('mouseleave', () => hover = false)
 	document.querySelector('.left-arrow').addEventListener('click', function() {
