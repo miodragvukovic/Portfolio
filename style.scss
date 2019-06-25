@@ -791,8 +791,15 @@ main {
 	z-index: -1;
 	.dot {
 		position: absolute;
-		left: 40%;
+		left: 50%;
 		top: 50%;
+		transform-style: preserve-3d;
+		transform: scale(.5);
+		// transition: .2s ease-out;
+		// transform: rotateX(123.2deg) rotateY(37.2deg);
+	}
+	.inner-dot {
+		position: relative;
 		transform-style: preserve-3d;
 		transition: .2s ease-out;
 		transform: rotateX(123.2deg) rotateY(37.2deg);
@@ -1171,6 +1178,8 @@ main {
 	}
 	p, h4, blockquote {
 		text-align: left;
+		margin-bottom: 0;
+		padding-bottom: 5vh;
 		margin-right: 15px;
 	}
 }
