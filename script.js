@@ -126,7 +126,12 @@ const Brain = {
 	},
 	personalFunc() {
 		document.getElementsByClassName('section')[1].addEventListener('mousemove', (e) => {
-		  document.querySelector('.dot').style.transform = "rotateX("+e.pageX / 10+"deg) rotateY("+e.pageY / 10+"deg)"
+			document.querySelector('.dot').style.transform = "rotateX("+e.pageX / 10+"deg) rotateY("+e.pageY / 10+"deg)"
+		})
+		let container = document.getElementsByClassName('page-content')[containerIncrement]
+		container.addEventListener('scroll', () => {
+			var scrolledFromTop = container.scrollTop
+			// document.querySelector('.dot').style.transform = "translate3d("+scrolledFromTop / 20+"px,0, 0)"
 		})
 	},
 	projectsFunc() {

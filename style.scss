@@ -594,7 +594,7 @@ main {
 				top: 0;
 				left: 0;
 				animation: left 1s linear infinite;
-				animation-play-state: paused;
+				// animation-play-state: paused;
 				&:before {
 					position: absolute;
 					content: '';
@@ -1148,7 +1148,6 @@ main {
 .personal.active {
 	overflow: hidden;
 	.big-bad-wheel-wrap {
-		// transform: translate3d(0, 0, 0);
 		transform: scale3d(1, 1, 1);
 		opacity: 1;
 	}
@@ -1174,6 +1173,10 @@ main {
 		text-align: left;
 		margin-right: 15px;
 	}
+}
+
+.skills.active {
+	overflow: hidden;
 }
 
 
