@@ -84,129 +84,112 @@ function request(page) {
 	request.send()
 }
 
-function homepageFunc() {
-	var corrnerWheel = document.querySelector('.top-corrner-wheels')
-	var logo = document.querySelector('.logo')
-	var move = 0
-	var colorMove = 0
-	var colorMoveBool = true
-	var moveLetters = 0
-	var truth = true
-	document.querySelector('.homepage').addEventListener('mousemove', function(e){
-		const x = e.clientX
-		move++
-		corrnerWheel.children[0].style.transform = matrixRotate(move * 0.3)
-		corrnerWheel.children[1].style.transform = "translate(90%, -25%) scale(.9) rotate3d(0, 0, 1, -"+move * 0.3+"deg)"
-		corrnerWheel.children[2].style.transform = "translate(-12%, 95%) scale(.9) rotate3d(0, 0, 1, -"+move * 0.3+"deg)"
-		if ( colorMoveBool ) {
-			colorMove++
-		} else {
-			colorMove--
+const Brain = {
+	homepageFunc() {
+		var corrnerWheel = document.querySelector('.top-corrner-wheels')
+		var logo = document.querySelector('.logo')
+		var move = 0
+		var colorMove = 0
+		var colorMoveBool = true
+		var moveLetters = 0
+		var truth = true
+		document.querySelector('.homepage').addEventListener('mousemove', function(e){
+			const x = e.clientX
+			move++
+			corrnerWheel.children[0].style.transform = matrixRotate(move * 0.3)
+			corrnerWheel.children[1].style.transform = "translate(90%, -25%) scale(.9) rotate3d(0, 0, 1, -"+move * 0.3+"deg)"
+			corrnerWheel.children[2].style.transform = "translate(-12%, 95%) scale(.9) rotate3d(0, 0, 1, -"+move * 0.3+"deg)"
+			if ( colorMoveBool ) {
+				colorMove++
+			} else {
+				colorMove--
+			}
+			if (colorMove >= 255) {
+				colorMoveBool = false
+			} else if ( colorMove <= 0 ) {
+				colorMoveBool = true
+			}
+			logo.style.background = "rgb("+ colorMove +", "+ colorMove +", "+ colorMove +")"
+			logo.style.color = "rgb("+ (255 - colorMove) +", "+ (255 - colorMove) +", "+ (255 - colorMove) +")"
+		})
+	},
+	professionalFunc() {
+		let container = document.getElementsByClassName('page-content')[containerIncrement]
+		let els = document.getElementsByClassName('count')
+		container.addEventListener('scroll', () => {
+			var scrolledFromTop = container.scrollTop
+			document.querySelector('.big-bad-wheel').style.transform = "rotate3d(0, 0, 1, "+ scrolledFromTop / 20 +"deg)"
+			for ( let el of els ) {
+				scrolledFromTop + window.innerHeight * 0.77 > el.offsetTop ? el.classList.add('active') : el.classList.remove('active')
+			}
+		})
+	},
+	personalFunc() {
+		document.getElementsByClassName('section')[1].addEventListener('mousemove', (e) => {
+		  document.querySelector('.dot').style.transform = "rotateX("+e.pageX / 10+"deg) rotateY("+e.pageY / 10+"deg)"
+		})
+	},
+	projectsFunc() {
+		var sliderIndex = 0
+		var istina = false
+		var hover = false
+		var start, end, result
+		var slides = document.getElementsByClassName('slide')
+		var slider = document.querySelector('.slider')
+		function doTheJob() {
+		  document.querySelector('.inner').style.left = "-"+ sliderIndex +"00%"
+		  for ( let slide of slides ) {
+		    slide.classList.remove('active')
+		  }
+		  document.querySelector('.slide'+ (sliderIndex+1) +'').classList.add('active')
 		}
-		if (colorMove >= 255) {
-			colorMoveBool = false
-		} else if ( colorMove <= 0 ) {
-			colorMoveBool = true
-		}
-		logo.style.background = "rgb("+ colorMove +", "+ colorMove +", "+ colorMove +")"
-		logo.style.color = "rgb("+ (255 - colorMove) +", "+ (255 - colorMove) +", "+ (255 - colorMove) +")"
-	})
-}
-
-function professionalFunc() {
-	let container = document.getElementsByClassName('page-content')[containerIncrement]
-	let els = document.getElementsByClassName('count')
-	container.addEventListener('scroll', () => {
-		var scrolledFromTop = container.scrollTop
-		document.querySelector('.big-bad-wheel').style.transform = "rotate3d(0, 0, 1, "+ scrolledFromTop / 20 +"deg)"
-		for ( let el of els ) {
-			scrolledFromTop + window.innerHeight * 0.77 > el.offsetTop ? el.classList.add('active') : el.classList.remove('active')
-		}
-	})
-}
-
-function personalFunc() {
-	document.getElementsByClassName('section')[1].addEventListener('mousemove', (e) => {
-	  document.querySelector('.dot').style.transform = "rotateX("+e.pageX / 10+"deg) rotateY("+e.pageY / 10+"deg)"
-	})
-}
-
-function skillsFunc() {
-	var sliderIndex = 0
-	var istina = false
-	var hover = false
-	var start, end, result
-	var slides = document.getElementsByClassName('slide')
-	var slider = document.querySelector('.slider')
-	// document.querySelector('.inner').style.width = ""+slider.length+"00%";
-	function doTheJob() {
-	  document.querySelector('.inner').style.left = "-"+ sliderIndex +"00%"
-	  for ( let slide of slides ) {
-	    slide.classList.remove('active')
-	  }
-	  document.querySelector('.slide'+ (sliderIndex+1) +'').classList.add('active')
+		slider.addEventListener('mouseenter', () => hover = true)
+		slider.addEventListener('mouseleave', () => hover = false)
+		document.querySelector('.left-arrow').addEventListener('click', function() {
+		  if ( sliderIndex < 1 ) {
+		    return false
+		  } else {
+		    var orient = Number(this.getAttribute('data-value'))
+		    sliderIndex = sliderIndex + orient
+		    doTheJob()
+		  }
+		})
+		document.querySelector('.right-arrow').addEventListener('click', function() {
+		  if ( sliderIndex + 1 >= slides.length ) {
+		    return false
+		  } else {
+		    var orient = Number(this.getAttribute('data-value'))
+		    sliderIndex = sliderIndex + orient
+		    doTheJob()
+		  }
+		})
+		slider.addEventListener('mousedown', function(e){
+		  start = e.pageX
+		})
+		slider.addEventListener('mouseup', function(e){
+		  end = e.pageX
+		  result = start - end
+		  if ( result >= 20 ) {
+		    if ( sliderIndex + 1 >= slides.length ) {
+		      return false
+		    } else {
+		      sliderIndex = sliderIndex + 1
+		      doTheJob()
+		    }
+		  } else if ( result < -20 ) {
+		    if ( sliderIndex < 1 ) {
+		      return false
+		    } else {
+		      sliderIndex = sliderIndex - 1
+		      doTheJob()
+		    }
+		  }
+		})
 	}
-	// var interval = setInterval(function(){
-	//   if ( hover == false ) {
-	//     if ( sliderIndex == slides.length - 1) {
-	//       istina = true
-	//     } else if ( sliderIndex == 0 ) {
-	//       istina = false
-	//     }
-	//     if ( istina == false ) {
-	//       sliderIndex++
-	//       doTheJob()
-	//     } else {
-	//       sliderIndex--
-	//       doTheJob()
-	//     }
-	//   }
-	// }, 5000)
-	slider.addEventListener('mouseenter', () => hover = true)
-	slider.addEventListener('mouseleave', () => hover = false)
-	document.querySelector('.left-arrow').addEventListener('click', function() {
-	  if ( sliderIndex < 1 ) {
-	    return false
-	  } else {
-	    var orient = Number(this.getAttribute('data-value'))
-	    sliderIndex = sliderIndex + orient
-	    doTheJob()
-	  }
-	})
-	document.querySelector('.right-arrow').addEventListener('click', function() {
-	  if ( sliderIndex + 1 >= slides.length ) {
-	    return false
-	  } else {
-	    var orient = Number(this.getAttribute('data-value'))
-	    sliderIndex = sliderIndex + orient
-	    doTheJob()
-	  }
-	})
-	slider.addEventListener('mousedown', function(e){
-	  start = e.pageX
-	})
-	slider.addEventListener('mouseup', function(e){
-	  end = e.pageX
-	  result = start - end
-	  if ( result >= 20 ) {
-	    if ( sliderIndex + 1 >= slides.length ) {
-	      return false
-	    } else {
-	      sliderIndex = sliderIndex + 1
-	      doTheJob()
-	    }
-	  } else if ( result < -20 ) {
-	    if ( sliderIndex < 1 ) {
-	      return false
-	    } else {
-	      sliderIndex = sliderIndex - 1
-	      doTheJob()
-	    }
-	  }
-	})
 }
 
 function check(param) {
 	var section = document.getElementsByClassName('section')[1]
-	section.classList.contains(param) ? window[param + "Func"]() : false
+	// section.classList.contains(param) ? window[param + "Func"]() : false
+	section.classList.contains(param) ? Brain[param + "Func"]() : false
 }

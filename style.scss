@@ -676,7 +676,6 @@ main {
 		display: inline-block;
 		-webkit-text-stroke: 1px $white;
 		color: transparent;
-		// font-weight: 900;
 		cursor: default;
 		transform-origin: top right;
 		transition: all 750ms cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -860,7 +859,10 @@ main {
 	overflow: hidden;
 	top: 0;
 	z-index: -1;
-	transform: translate3d(30%, 0, 0);
+	// transform: translate3d(30%, 0, 0);
+	transition: .5s cubic-bezier(0,1.2,.88,1.01);
+	transform: scale3d(0, 0, 1);
+	transform-origin: right center;
 	transition-delay: 1s;
 	opacity: 0;
 	.big-bad-wheel {
@@ -1146,7 +1148,8 @@ main {
 .personal.active {
 	overflow: hidden;
 	.big-bad-wheel-wrap {
-		transform: translate3d(0, 0, 0);
+		// transform: translate3d(0, 0, 0);
+		transform: scale3d(1, 1, 1);
 		opacity: 1;
 	}
 	.show-up {
@@ -1174,7 +1177,7 @@ main {
 }
 
 
-.skills.active {
+.projects.active {
 	.page-content {
 		height: 100%;
 	}
