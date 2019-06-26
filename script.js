@@ -78,7 +78,8 @@ function request(page) {
 				disableClick = false
 				document.querySelector('.loading-line').classList.remove('active')
 			}, 800)
-			check(page)
+			Brain[page + "Func"]()
+			// check(page)
 		}
 	}
 	request.send()
@@ -193,8 +194,8 @@ const Brain = {
 	}
 }
 
-function check(param) {
-	var section = document.getElementsByClassName('section')[1]
-	// section.classList.contains(param) ? window[param + "Func"]() : false
-	section.classList.contains(param) ? Brain[param + "Func"]() : false
-}
+// function check(param) {
+// 	var section = document.getElementsByClassName('section')[1]
+// 	// section.classList.contains(param) ? window[param + "Func"]() : false
+// 	section.classList.contains(param) ? Brain[param + "Func"]() : false
+// }
