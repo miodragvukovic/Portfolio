@@ -967,9 +967,8 @@ main {
 		margin: 0;
 		color: transparent;
 		line-height: normal;
-		font-weight: 700;
+		font-weight: 900;
 		transform: translate3d(0, -50%, 0);
-		text-transform: uppercase;
 		opacity: 0;
 		letter-spacing: 50px;
 		transition-delay: 0s;
@@ -981,16 +980,17 @@ main {
 		&.has-before, &.has-after {
 			&:before, &:after {
 				position: absolute;
+				font-weight: 600;
 				top: 105%;
-				font-size: calc(1rem + 2vh);
+				font-size: calc(1rem + 1vh);
 				color: $white;
-				text-transform: capitalize;
+				white-space: nowrap;
 			}
 		}
 		&.has-before {
 			&:before {
 				content: attr(data-before);
-				right: 60%;
+				left: 0;
 			}
 		}
 		&.has-after {
@@ -1014,7 +1014,7 @@ main {
 		z-index: 5;
 		display: block;
 		padding: 10px;
-		top: 90%;
+		top: 85%;
 		left: 50%;
 		text-transform: uppercase;
 		transform: translateX(-50%);
