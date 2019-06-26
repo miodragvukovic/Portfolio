@@ -135,6 +135,35 @@ const Brain = {
 			document.querySelector('.dot').style.transform = "translate3d(-"+scrolledFromTop / 50+"vw,0, 0) scale("+ (0.5 + scrolledFromTop / 1000) +")"
 		})
 	},
+	skillsFunc() {
+		var scTop = 0
+		window.addEventListener('wheel', function(e){
+			var parent = document.querySelector('.skills-container')
+			var child = document.querySelector('.scrolling-area')
+			if ( scTop < 0 ) {
+				scTop = 0
+			} else if ( scTop > child.offsetWidth - parent.offsetWidth) {
+				scTop = child.offsetWidth - parent.offsetWidth
+			} else {
+				scTop = Number((scTop + e.deltaY / 5).toFixed(0))
+				document.querySelector('.scrolling-area').style.transform = "translate3d(-"+scTop+"px, 0, 0)"
+				document.querySelector('.progress-line').style.width = (scTop / (child.offsetWidth - parent.offsetWidth)) * 100 + "%"
+			}
+			for ( let span of document.getElementsByClassName('skill-span') ) {
+				let spanLeftDistance = Number((span.getBoundingClientRect().left).toFixed(0))
+				let triggerPoint = spanLeftDistance + scTop - parent.offsetWidth / 2 - parent.offsetWidth / 10
+				if ( scTop > triggerPoint ) {
+					if ( scTop - triggerPoint < parent.offsetWidth / 4 && scTop - triggerPoint > 20 ) {
+						// span.style.opacity = (scTop - triggerPoint) / (parent.offsetWidth / 4)
+						span.style.letterSpacing = 50 - ((scTop - triggerPoint) / (parent.offsetWidth / 4)) * 50 + "px"
+						span.classList.add('fade')
+					} else {
+						span.classList.remove('fade')
+					}
+				}
+			} 
+		})
+	},
 	projectsFunc() {
 		var sliderIndex = 0
 		var istina = false

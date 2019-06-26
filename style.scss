@@ -20,6 +20,7 @@ body {
 	color: $white;
 	background: $black;
 	font-family: 'Montserrat', sans-serif;
+	overflow: hidden;
 }
 h1 {
 	font-size: calc(1rem + 10vh);
@@ -943,6 +944,129 @@ main {
 	}
 }
 
+.skills-container {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	transform-style: preserve-3d;
+	transform-origin: left;
+	.scrolling-area {
+		position: absolute;
+		height: 100%;
+		margin-left: 50%;
+		width: 700%;
+		display: flex;
+		transition: .3s ease-out;
+	}
+	.skill-span {
+		position: absolute;
+		-webkit-text-stroke: 1px $white;
+		font-size: 10vh;
+		top: 25%;
+		margin: 0;
+		color: transparent;
+		line-height: normal;
+		font-weight: 700;
+		transform: translate3d(0, -50%, 0);
+		text-transform: uppercase;
+		opacity: 0;
+		letter-spacing: 50px;
+		transition-delay: 0s;
+		transition: opacity .3s ease-out;
+		&.fade {
+			transition: opacity .5s ease-out;
+			opacity: 1;
+		}
+		&.has-before, &.has-after {
+			&:before, &:after {
+				position: absolute;
+				top: 105%;
+				font-size: calc(1rem + 2vh);
+				color: $white;
+				text-transform: capitalize;
+			}
+		}
+		&.has-before {
+			&:before {
+				content: attr(data-before);
+				right: 60%;
+			}
+		}
+		&.has-after {
+			&:after {
+				content: attr(data-after);
+				left: 60%;
+			}
+		}
+		&::first-letter {
+			color: white;
+		}
+		&:nth-child(even) {
+			top: 50%;
+		}
+		&:nth-child(4n - 5) {
+			top: 75%;
+		}
+	}
+	.scroll-me {
+		position: absolute;
+		z-index: 5;
+		display: block;
+		padding: 10px;
+		top: 90%;
+		left: 50%;
+		text-transform: uppercase;
+		transform: translateX(-50%);
+		color: $white;
+		font-size: calc(1rem + 1vh);
+		animation: 5s scroll-trigger-anim linear infinite;
+		&::first-letter {
+			color: red;
+		}
+		&:after, &:before {
+			content: '';
+			position: absolute;
+			height: 2px;
+			width: 58%;
+			background: white;
+			top: 120%;
+			left: -4%;
+			transform: rotate(30deg);
+		}
+		&:after {
+			left: 46%;
+			transform: rotate(-30deg);
+		}
+	}
+	.progress-line {
+		position: absolute;
+		top: calc(100% - 5px);
+		left: 0;
+		height: 5px;
+		width: 0;
+		background: $white;
+		z-index: 5;
+		transition: none;
+	}
+}
+
+@keyframes scroll-trigger-anim {
+	0% {transform: translate3d(-50%, 0, 0);}
+	20% {transform: translate3d(-50%, -10px, 0);}
+	30% {transform: translate3d(-50%, 0, 0);}
+	40% {transform: translate3d(-50%, -10px, 0);}
+	50% {transform: translate3d(-50%, 0, 0);}
+	75% {transform: translate3d(-50%, -10px, 0);}
+	100% {transform: translate3d(-50%, 0, 0);}
+}
+
+@for $i from 1 to 100 {
+	.skill-span:nth-child(#{$i}) {
+		left: 17vw * $i;
+	}
+}
+
 .slider {
 	position: relative;
 	height: 100%;
@@ -1186,6 +1310,9 @@ main {
 
 .skills.active {
 	overflow: hidden;
+	.page-content {
+		height: 100%;
+	}
 }
 
 
