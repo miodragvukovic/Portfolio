@@ -1310,6 +1310,24 @@ main {
 	}
 }
 
+.about.active {
+	article {
+		h2 {
+			margin-bottom: 5vh;
+		}
+		li {
+			position: relative;
+			margin-bottom: 5vh;
+			padding-left: 5vw;
+			&:before {
+				content: '\2010';
+				position: relative;
+				display: inline;
+			}
+		}
+	}
+}
+
 .skills.active {
 	overflow: hidden;
 	.page-content {
