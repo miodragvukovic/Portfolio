@@ -171,7 +171,6 @@ const Brain = {
 		})
 	},
 	aboutFunc() {
-		console.log('rrr')
 	},
 	projectsFunc() {
 		var sliderIndex = 0
