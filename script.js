@@ -22,7 +22,8 @@ function matrixRotate(num) {
 
 for ( let i = 0; i < document.getElementsByClassName('trigger').length; i++ ) {
 	var trigger = document.getElementsByClassName('trigger')[i]
-	trigger.addEventListener('click', function(){
+	trigger.addEventListener('click', function(e) {
+		e.preventDefault()
 		containerIncrement = 1
 		let selected = this.getAttribute('data-target')
 		let selectedAnchorValue = ((i + 1) * 16.666) - 8.333
@@ -78,8 +79,8 @@ function request(page) {
 				disableClick = false
 				document.querySelector('.loading-line').classList.remove('active')
 			}, 800)
-			Brain[page + "Func"]()
-			// check(page)
+			// Brain[page + "Func"]()
+			check(page)
 		}
 	}
 	request.send()
@@ -137,7 +138,7 @@ const Brain = {
 	},
 	skillsFunc() {
 		var scTop = 0
-		window.addEventListener('wheel', function(e){
+		document.querySelector('.skills-container').addEventListener('wheel', function(e) {
 			if ( e.deltaY > 1 || e.deltaY < -1 ) {
 				document.querySelector('.scroll-me').style.color = 'red'
 			} else {
@@ -231,8 +232,8 @@ const Brain = {
 	}
 }
 
-// function check(param) {
-// 	var section = document.getElementsByClassName('section')[1]
-// 	// section.classList.contains(param) ? window[param + "Func"]() : false
-// 	section.classList.contains(param) ? Brain[param + "Func"]() : false
-// }
+function check(param) {
+	var section = document.getElementsByClassName('section')[1]
+	// section.classList.contains(param) ? window[param + "Func"]() : false
+	section.classList.contains(param) ? Brain[param + "Func"]() : false
+}

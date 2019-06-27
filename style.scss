@@ -148,12 +148,17 @@ main {
 		cursor: pointer;
 		opacity: 0;
 		transform: translate3d(100px, 0, 0);
-		span {
+		a {
 			position: relative;
 			overflow-x: hidden;
 			padding: 5px 10px;
 			font-size: calc(1rem + 1.5vh);
 			margin: 0;
+			color: $white;
+			position: absolute;
+			top: 50%;
+			left: 10%;
+			transform: translateY(-50%);
 			&:before {
 				content: '';
 				position: absolute;
@@ -163,30 +168,29 @@ main {
 				height: .5vh;
 				background: $white;
 			}
+			&:focus {
+				outline-color: transparent;
+				&:before {
+					animation: .5s speedLine ease-out;
+				}
+			}
 		}
 		&:hover {
-			span {
+			a {
 				&:before {
 					animation: .5s speedLine ease-out;
 				}
 			}
 		}
 		&.active {
-			span {
+			a {
 				color: $red;
-				left: 25%;
+				left: 20%;
 				&:before {
 					animation: none;
 				}
 			}
 		}
-	}
-	.trigger-title {
-		color: $white;
-		position: absolute;
-		top: 50%;
-		left: 10%;
-		transform: translateY(-50%);
 	}
 	&.active {
 		li {
@@ -761,9 +765,9 @@ main {
 		display: flex;
 		justify-content: space-around;
 		&:nth-child(even) {
-			width: 110%;
+			width: 100%;
 			position: relative;
-			left: -5%;
+			left: 0%;
 		}
 	}
 	.scale {
