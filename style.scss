@@ -752,7 +752,7 @@ main {
 	top: 0;
 	left: 0;
 	transition: none;
-	z-index: -1;
+	z-index: 1;
 	overflow: hidden;
 }
 
@@ -780,7 +780,7 @@ main {
 		&:hover {
 			background: rgba(255,255,255,.1);
 			transition: .5s ease-out;
-			transform: scale(2) rotate(45deg);
+			transform: scale(1.5) rotate(45deg);
 		}
 	}
 }
