@@ -954,8 +954,8 @@ main {
 	.scrolling-area {
 		position: absolute;
 		height: 100%;
-		margin-left: 50%;
-		width: 700%;
+		margin-left: 40%;
+		width: 600%;
 		display: flex;
 		transition: .3s ease-out;
 	}
@@ -963,7 +963,7 @@ main {
 		position: absolute;
 		-webkit-text-stroke: 1px $white;
 		font-size: 10vh;
-		top: 25%;
+		top: 10%;
 		margin: 0;
 		color: transparent;
 		line-height: normal;
@@ -1003,10 +1003,10 @@ main {
 			color: white;
 		}
 		&:nth-child(even) {
-			top: 50%;
+			top: 40%;
 		}
 		&:nth-child(4n - 5) {
-			top: 75%;
+			top: 70%;
 		}
 	}
 	.scroll-me {
@@ -1019,11 +1019,9 @@ main {
 		text-transform: uppercase;
 		transform: translateX(-50%);
 		color: $white;
+		cursor: pointer;
 		font-size: calc(1rem + 1vh);
 		animation: 5s scroll-trigger-anim linear infinite;
-		&::first-letter {
-			color: red;
-		}
 		&:after, &:before {
 			content: '';
 			position: absolute;

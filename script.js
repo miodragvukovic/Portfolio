@@ -138,6 +138,11 @@ const Brain = {
 	skillsFunc() {
 		var scTop = 0
 		window.addEventListener('wheel', function(e){
+			if ( e.deltaY > 1 || e.deltaY < -1 ) {
+				document.querySelector('.scroll-me').style.color = 'red'
+			} else {
+				document.querySelector('.scroll-me').style.color = 'white'
+			}
 			var parent = document.querySelector('.skills-container')
 			var child = document.querySelector('.scrolling-area')
 			if ( scTop < 0 ) {
@@ -151,7 +156,7 @@ const Brain = {
 			}
 			for ( let span of document.getElementsByClassName('skill-span') ) {
 				let spanLeftDistance = Number((span.getBoundingClientRect().left).toFixed(0))
-				let triggerPoint = spanLeftDistance + scTop - parent.offsetWidth / 2 - parent.offsetWidth / 10
+				let triggerPoint = spanLeftDistance + scTop - parent.offsetWidth / 2
 				if ( scTop > triggerPoint ) {
 					if ( scTop - triggerPoint < parent.offsetWidth / 4 && scTop - triggerPoint > 20 ) {
 						// span.style.opacity = (scTop - triggerPoint) / (parent.offsetWidth / 4)
@@ -163,6 +168,9 @@ const Brain = {
 				}
 			} 
 		})
+	},
+	aboutFunc() {
+		console.log('rrr')
 	},
 	projectsFunc() {
 		var sliderIndex = 0
