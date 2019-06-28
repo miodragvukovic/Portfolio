@@ -1122,6 +1122,9 @@ main {
 		margin-bottom: 0;
 		padding-bottom: 5vh;
 		margin-right: 15px;
+		@media (max-width: $lg) {
+			text-align: right;
+		}
 	}
 }
 .about.active {
@@ -1209,5 +1212,17 @@ main {
 	}
 	@media (max-width: $lg) {
 		display: block;
+	}
+}
+
+.about.active {
+	@media (max-width: $lg) {
+		.page-content {
+			overflow: auto;
+			height: 100%;
+		}
+		.square-overlay {
+			display: none;
+		}
 	}
 }
