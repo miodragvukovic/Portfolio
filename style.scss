@@ -110,7 +110,7 @@ main {
 		}
 	}
 	@media (max-width: $lg) {
-		padding: 5vh 5vw 5vh 5vw;
+		padding: 90px 5vw 5vh 5vw;
 	}
 }
 .loading-line {
@@ -163,6 +163,10 @@ main {
 			@media (max-width: 1240px) {
 				font-size: calc(1rem + 1vh);
 			}
+			@media (max-width: $lg) {
+				font-size: calc(1rem + 2vh);
+				font-weight: 600;
+			}
 			&:before {
 				content: '';
 				position: absolute;
@@ -205,6 +209,7 @@ main {
 		width: 100%;
 		background: $black;
 		transform: translate3d(0, -100%, 0);
+		right: 0;
 		li {
 			width: 100%;
 
@@ -537,6 +542,9 @@ main {
 	.wheel.lower {
 		transform: translate(-12%, 95%) scale(.9) rotate(0deg);
 	}
+	@media (max-width: $lg) {
+		top: -90px;
+	}
 }
 .logo {
 	position: absolute;
@@ -552,6 +560,8 @@ main {
 	transition: opacity .5s ease-out;
 	@media (max-width: $lg) {
 		width: 100vw;
+		top: calc(7vh - 35px);
+		transform: rotate3d(0, 0, 1, -50deg) translateX(-50%);
 	}
 }
 .square-overlay {
@@ -657,6 +667,9 @@ main {
 			transform: translate3d(-98%, -50%, 0) rotateY(90deg) scale(.3);
 		}
 	}
+	@media (max-width: $lg) {
+		display: none;
+	}
 }
 @keyframes unsquare {
 	0% {border-radius: 50%;}
@@ -735,6 +748,9 @@ main {
 			border: 1px solid $white;
 			border-radius: 50%;
 		}
+	}
+	@media (max-width: $lg) {
+		display: none;
 	}
 }
 @for $spike from 1 to 19 {
@@ -849,6 +865,28 @@ main {
 		background: $white;
 		z-index: 5;
 		transition: none;
+	}
+	@media (max-width: $lg) {
+		.scrolling-area {
+			height: 100%;
+			width: 100%;
+			margin: 0;
+			flex-direction: column;
+			.skill-span {
+				position: relative;
+				font-size: calc(1rem + 2vh);
+				font-weight: 600;
+				opacity: 1;
+				transform: none;
+				top: 0;
+				left: 0;
+				letter-spacing: normal;
+				&:after {
+					font-size: calc(1rem + 1vh);
+				}
+			}
+		}
+
 	}
 }
 @keyframes scroll-trigger-anim {
@@ -1015,11 +1053,6 @@ main {
 			&:before {
 				animation: showcase-b .5s ease-out;
 			}
-		}
-	}
-	@media (max-width: $lg) {
-		.page-content {
-			padding-top: 30%;
 		}
 	}
 }
