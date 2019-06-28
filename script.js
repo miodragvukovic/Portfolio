@@ -20,6 +20,17 @@ function matrixRotate(num) {
 	return "matrix("+ a +", "+ b +", "+ c +", "+ d +", 0, 0)"
 }
 
+document.querySelector('.dropdown-trigger').addEventListener('click', function(){
+	if ( this.classList.contains('active') ) {
+		this.classList.remove('active')
+		document.querySelector('.nav').classList.remove('expand')
+	} else {
+		this.classList.add('active')
+		document.querySelector('.nav').classList.add('expand')
+	}
+	// this.classList.contains('active') ? this.classList.remove('active') : this.classList.add('active')
+})
+
 for ( let i = 0; i < document.getElementsByClassName('trigger').length; i++ ) {
 	var trigger = document.getElementsByClassName('trigger')[i]
 	trigger.addEventListener('click', function(e) {
@@ -36,6 +47,8 @@ for ( let i = 0; i < document.getElementsByClassName('trigger').length; i++ ) {
 			} else {
 				for ( var trigger1 of document.getElementsByClassName('trigger') ) {
 					trigger1.classList.remove('active')
+					document.querySelector('.nav').classList.remove('expand')
+					document.querySelector('.dropdown-trigger').classList.remove('active')
 				}
 				this.classList.add('active')
 				request(selected)
@@ -139,7 +152,7 @@ const Brain = {
 	skillsFunc() {
 		var scTop = 0
 		document.querySelector('.skills-container').addEventListener('wheel', function(e) {
-			if ( e.deltaY > 1 || e.deltaY < -1 ) {
+			if ( e.deltaY > 2 || e.deltaY < -2 ) {
 				document.querySelector('.scroll-me').style.color = 'red'
 			} else {
 				document.querySelector('.scroll-me').style.color = 'white'
