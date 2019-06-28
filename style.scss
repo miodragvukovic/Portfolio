@@ -888,15 +888,18 @@ main {
 					color: $red;
 				}
 				&:after {
+					position: relative;
 					font-size: calc(1rem + 1vh);
-					top: 50%;
-					transform: translateY(-50%);
+					top: auto;
 					left: auto;
-					margin-left: 20px;
+					display: block;
+					margin-left: 10px;
 				}
 			}
 		}
-
+		.scroll-me {
+			display: none;
+		}
 	}
 }
 @keyframes scroll-trigger-anim {
