@@ -98,10 +98,6 @@ function request(page) {
 	request.send()
 }
 
-// function x() {
-// 	document.querySelector('.big-bad-wheel').style.transform = "rotate3d(0, 0, 1, "+ scrolledFromTop / 20 +"deg)"
-// }
-
 const Brain = {
 	container: document.getElementsByClassName('page-content'),
 	count: document.getElementsByClassName('count'),
