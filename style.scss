@@ -819,7 +819,7 @@ main {
 			}
 		}
 		&::first-letter {
-			color: white;
+			color: $white;
 		}
 		&:nth-child(even) {
 			top: 40%;
@@ -867,6 +867,7 @@ main {
 		transition: none;
 	}
 	@media (max-width: $lg) {
+		overflow: auto;
 		.scrolling-area {
 			height: 100%;
 			width: 100%;
@@ -881,8 +882,17 @@ main {
 				top: 0;
 				left: 0;
 				letter-spacing: normal;
+				-webkit-text-stroke: 1px transparent;
+				color: $white;
+				&::first-letter {
+					color: $red;
+				}
 				&:after {
 					font-size: calc(1rem + 1vh);
+					top: 50%;
+					transform: translateY(-50%);
+					left: auto;
+					margin-left: 20px;
 				}
 			}
 		}
