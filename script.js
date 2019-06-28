@@ -28,7 +28,6 @@ document.querySelector('.dropdown-trigger').addEventListener('click', function()
 		this.classList.add('active')
 		document.querySelector('.nav').classList.add('expand')
 	}
-	// this.classList.contains('active') ? this.classList.remove('active') : this.classList.add('active')
 })
 
 for ( let i = 0; i < document.getElementsByClassName('trigger').length; i++ ) {
@@ -99,7 +98,29 @@ function request(page) {
 	request.send()
 }
 
+// function x() {
+// 	document.querySelector('.big-bad-wheel').style.transform = "rotate3d(0, 0, 1, "+ scrolledFromTop / 20 +"deg)"
+// }
+
 const Brain = {
+	container: document.getElementsByClassName('page-content'),
+	count: document.getElementsByClassName('count'),
+	scroll(containerElement, targets, doSomething) {
+		let container = containerElement[containerIncrement]
+		container.addEventListener('scroll', () => {
+			var scrolledFromTop = container.scrollTop
+			for ( let el of targets ) {
+				scrolledFromTop + window.innerHeight * 0.77 > el.offsetTop ? el.classList.add('active') : el.classList.remove('active')
+			}
+			doSomething(scrolledFromTop)
+		})
+	},
+	proffesionalAnim(x) {
+		document.querySelector('.big-bad-wheel').style.transform = "rotate3d(0, 0, 1, "+ x / 20 +"deg)"
+	},
+	personalAnim(x) {
+		document.querySelector('.dot').style.transform = "translate3d(-"+x / 50+"vw,0, 0) scale("+ (0.5 + x / 1000) +")"
+	},
 	homepageFunc() {
 		var corrnerWheel = document.querySelector('.top-corrner-wheels')
 		var logo = document.querySelector('.logo')
@@ -111,7 +132,7 @@ const Brain = {
 		document.querySelector('.homepage').addEventListener('mousemove', function(e){
 			const x = e.clientX
 			move++
-			corrnerWheel.children[0].style.transform = matrixRotate(move * 0.3)
+			corrnerWheel.children[0].style.transform = "rotate3d(0, 0, 1, "+move * 0.3+"deg)"
 			corrnerWheel.children[1].style.transform = "translate(90%, -25%) scale(.9) rotate3d(0, 0, 1, -"+move * 0.3+"deg)"
 			corrnerWheel.children[2].style.transform = "translate(-12%, 95%) scale(.9) rotate3d(0, 0, 1, -"+move * 0.3+"deg)"
 			if ( colorMoveBool ) {
@@ -129,25 +150,13 @@ const Brain = {
 		})
 	},
 	professionalFunc() {
-		let container = document.getElementsByClassName('page-content')[containerIncrement]
-		let els = document.getElementsByClassName('count')
-		container.addEventListener('scroll', () => {
-			var scrolledFromTop = container.scrollTop
-			document.querySelector('.big-bad-wheel').style.transform = "rotate3d(0, 0, 1, "+ scrolledFromTop / 20 +"deg)"
-			for ( let el of els ) {
-				scrolledFromTop + window.innerHeight * 0.77 > el.offsetTop ? el.classList.add('active') : el.classList.remove('active')
-			}
-		})
+		this.scroll(this.container, this.count, this.proffesionalAnim)
 	},
 	personalFunc() {
 		document.getElementsByClassName('section')[1].addEventListener('mousemove', (e) => {
 			document.querySelector('.inner-dot').style.transform = "rotateX("+e.pageX / 10+"deg) rotateY("+e.pageY / 10+"deg)"
 		})
-		let container = document.getElementsByClassName('page-content')[containerIncrement]
-		container.addEventListener('scroll', () => {
-			var scrolledFromTop = container.scrollTop
-			document.querySelector('.dot').style.transform = "translate3d(-"+scrolledFromTop / 50+"vw,0, 0) scale("+ (0.5 + scrolledFromTop / 1000) +")"
-		})
+		this.scroll(this.container, this.count, this.personalAnim)
 	},
 	skillsFunc() {
 		if ( window.innerWidth > 1024 ) {
