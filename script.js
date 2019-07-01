@@ -7,19 +7,6 @@ window.onload = function(){
 	request("homepage")
 }
 
-const degToRad = Math.PI * 2 / 360
-
-function matrixRotate(num) {
-	radian = num * degToRad
-	sin = Math.sin(radian)
-	cos = Math.cos(radian)
-	a = parseFloat(cos).toFixed(8)
-	b = parseFloat(sin).toFixed(8)
-	c = parseFloat(-sin).toFixed(8)
-	d = parseFloat(cos).toFixed(8)
-	return "matrix("+ a +", "+ b +", "+ c +", "+ d +", 0, 0)"
-}
-
 document.querySelector('.dropdown-trigger').addEventListener('click', function(){
 	if ( this.classList.contains('active') ) {
 		this.classList.remove('active')
@@ -108,7 +95,7 @@ const Brain = {
 			for ( let el of targets ) {
 				scrolledFromTop + window.innerHeight * 0.77 > el.offsetTop ? el.classList.add('active') : el.classList.remove('active')
 			}
-			doSomething(scrolledFromTop)
+			typeof doSomething === 'function' ? doSomething(scrolledFromTop) : false
 		})
 	},
 	proffesionalAnim(x) {
