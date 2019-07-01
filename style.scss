@@ -859,10 +859,10 @@ main {
 	}
 	.progress-line {
 		position: absolute;
-		top: calc(100% - 5px);
+		top: 0;
 		left: 0;
-		height: 5px;
-		width: 0;
+		height: 0;
+		width: 5px;
 		background: $white;
 		z-index: 5;
 		transition: none;

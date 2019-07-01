@@ -159,7 +159,7 @@ const Brain = {
 				} else {
 					scTop = Number((scTop + e.deltaY / 7).toFixed(0))
 					document.querySelector('.scrolling-area').style.transform = "translate3d(-"+scTop+"px, 0, 0)"
-					document.querySelector('.progress-line').style.width = (scTop / (child.offsetWidth - parent.offsetWidth)) * 100 + "%"
+					document.querySelector('.progress-line').style.height = (scTop / (child.offsetWidth - parent.offsetWidth)) * 100 + "%"
 				}
 				for ( let span of document.getElementsByClassName('skill-span') ) {
 					let spanLeftDistance = Number((span.getBoundingClientRect().left).toFixed(0))
