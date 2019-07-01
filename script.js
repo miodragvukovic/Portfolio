@@ -236,9 +236,3 @@ const Brain = {
 		})
 	}
 }
-
-// function check(param) {
-// 	var section = document.getElementsByClassName('section')[1]
-// 	// section.classList.contains(param) ? window[param + "Func"]() : false
-// 	section.classList.contains(param) ? Brain[param + "Func"]() : false
-// }
