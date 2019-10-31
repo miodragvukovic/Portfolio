@@ -1,0 +1,98 @@
+{
+  "homeHeating": {
+    "title": "Home Heating",
+    "energySource": [
+      {
+        "value": 0.6,
+        "text": "Propane Furnance"
+      },
+      {
+        "value": 0.7,
+        "text": "Electric Furnance"
+      },
+      {
+        "value": 0.65,
+        "text": "Oil Furnance"
+      }
+    ],
+    "efficiency": [
+      {
+        "value": 1,
+        "text": "Standard Efficiency"
+      },
+      {
+        "value": 1.3,
+        "text": "High Efficiency"
+      }
+    ],
+    "sectionIcon": "ico-space-heating-b.svg",
+    "inputText": "Square Feet",
+    "inputValue": 2300,
+    "naturalGasValue": 0.4,
+    "stateValue": 0
+  },
+  "waterHeating": {
+    "title": "Water Heating",
+    "energySource": [
+      {
+        "value": 224,
+        "text": "Propane Water Heating"
+      },
+      {
+        "value": 192,
+        "text": "Electric Water Heating"
+      },
+      {
+        "value": 214,
+        "text": "Oil Water Heating"
+      }
+    ],
+    "efficiency": [
+      {
+        "value": 1,
+        "text": "Standard Efficiency"
+      },
+      {
+        "value": 1.4,
+        "text": "High Efficiency"
+      }
+    ],
+    "sectionIcon": "ico-water-heating-b.svg",
+    "inputText": "Number of People in Home",
+    "inputValue": 6,
+    "naturalGasValue": 115,
+    "stateValue": 0
+  },
+  "cooking": {
+    "title": "Cooking",
+    "energySource": [
+      {
+        "value": 192,
+        "text": "Electric"
+      },
+      {
+        "value": 214,
+        "text": "Oil"
+      }
+    ],
+    "sectionIcon": "ico-cooking-b.svg",
+    "naturalGasValue": 122,
+    "stateValue": 0
+  },
+  "clothesDrying": {
+    "title": "Clothes Drying",
+    "energySource": [
+      {
+        "value": 167,
+        "text": "Electric"
+      },
+      {
+        "value": 211,
+        "text": "Oil"
+      }
+    ],
+    "sectionIcon": "ico-drying-b.svg",
+    "naturalGasValue": 97,
+    "stateValue": 0
+  }
+}
